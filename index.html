@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NextGen Media Player - Simple & Powerful</title>
+    <style>
+        :root {
+            --primary-color: #2563eb; /* 誠実なブルー */
+            --bg-color: #ffffff;
+            --text-main: #1f2937;
+            --text-sub: #6b7280;
+            --section-bg: #f9fafb;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--text-main);
+            line-height: 1.6;
+            background-color: var(--bg-color);
+        }
+
+        /* Layout */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            padding: 20px 0;
+            border-bottom: 1px solid #eee;
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        /* Hero */
+        .hero {
+            padding: 80px 0;
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            letter-spacing: -1px;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-sub);
+            margin-bottom: 30px;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 12px 32px;
+            background-color: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: opacity 0.2s;
+        }
+        .btn:hover {
+            opacity: 0.9;
+        }
+
+        /* Features */
+        .features {
+            padding: 60px 0;
+            background-color: var(--section-bg);
+        }
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+        .feature-item h3 {
+            margin-top: 0;
+            color: var(--primary-color);
+        }
+        .feature-item p {
+            font-size: 0.95rem;
+            color: var(--text-sub);
+        }
+
+        /* Footer */
+        footer {
+            padding: 40px 0;
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--text-sub);
+            border-top: 1px solid #eee;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 600px) {
+            .hero h1 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <nav>
+            <div class="logo">NextGen Media Player</div>
+            <a href="#download" class="btn" style="padding: 8px 16px; font-size: 0.9rem;">無料配布中</a>
+        </nav>
+    </div>
+</header>
+
+<main>
+    <section class="hero">
+        <div class="container">
+            <h1>動画視聴を、<br>もっと軽快に。</h1>
+            <p>NextGen Media Playerは、シンプルさと高機能を両立した<br>オープンソースのメディアプレーヤーです。</p>
+            <a href="#download" class="btn">今すぐダウンロード</a>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="container">
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <h3>自由な再生速度</h3>
+                    <p>0.5倍から3.0倍まで対応。細かな確認も、時短での視聴も、これ一つで思いのままに。</p>
+                </div>
+                <div class="feature-item">
+                    <h3>ワンクリック保存</h3>
+                    <p>気になった瞬間を逃さずスクリーンショット。高画質のまま画像として保存できます。</p>
+                </div>
+                <div class="feature-item">
+                    <h3>洗練されたUI</h3>
+                    <p>ドラッグ&ドロップですぐに再生。設定に迷わない直感的なユーザーインターフェース。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="download" style="padding: 80px 0; text-align: center;">
+        <div class="container">
+            <h2>Download</h2>
+            <p style="color: var(--text-sub);">Windows / macOS / Linux 対応</p>
+            <div style="margin-top: 20px;">
+                <a href="#" class="btn">GitHubで公開中</a>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="container">
+        <p>&copy; 2024 Shinonoi Crew Depot Works. Produced for all users.</p>
+    </div>
+</footer>
+
+</body>
+</html>
