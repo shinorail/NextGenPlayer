@@ -52,84 +52,73 @@
             color: var(--dark);
         }
 
-        nav a {
-            text-decoration: none;
-            color: var(--text-main);
-            margin-left: 35px;
-            font-weight: 600;
-            transition: color 0.2s;
-        }
-
         .nav-btn {
             background: var(--dark);
             color: var(--white) !important;
             padding: 10px 24px;
             border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: opacity 0.2s;
         }
+
+        .nav-btn:hover { opacity: 0.8; }
 
         /* Hero Section */
         .hero {
-            padding: 120px 0;
+            padding: 100px 0;
             text-align: center;
             background: radial-gradient(circle at top, #f8fafc 0%, #ffffff 100%);
         }
 
         .hero h1 {
-            font-size: 4rem;
+            font-size: 3.5rem;
             color: var(--dark);
             margin-bottom: 24px;
-            letter-spacing: -2px;
+            letter-spacing: -1.5px;
+            line-height: 1.2;
         }
 
         .hero p {
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             color: #64748b;
             max-width: 700px;
-            margin: 0 auto 60px;
-        }
-
-        .hero-image {
-            width: 100%;
-            max-width: 900px;
-            height: 500px;
-            background: #1e293b;
-            margin: 0 auto;
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #475569;
-            box-shadow: 0 40px 100px rgba(0,0,0,0.15);
-            border: 8px solid #f1f5f9;
+            margin: 0 auto 50px;
         }
 
         /* Features */
         .features {
-            padding: 120px 0;
+            padding: 100px 0;
+            background-color: var(--white);
         }
 
         .feature-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 40px;
+            gap: 30px;
         }
 
         .feature-card {
-            padding: 50px 40px;
+            padding: 40px;
             background: var(--light-bg);
-            border-radius: 24px;
-            transition: all 0.3s;
+            border-radius: 20px;
+            text-align: center;
+            transition: transform 0.3s ease;
         }
 
         .feature-card:hover {
-            transform: translateY(-10px);
-            background: white;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+            transform: translateY(-5px);
+        }
+
+        .feature-card h2 {
+            font-size: 1.5rem;
+            color: var(--dark);
+            margin-bottom: 15px;
         }
 
         /* Download Section */
-        .download {
-            padding: 140px 0;
+        .download-section {
+            padding: 120px 0;
             text-align: center;
             background-color: var(--dark);
             color: var(--white);
@@ -146,8 +135,8 @@
             text-decoration: none;
             font-weight: 700;
             font-size: 1.2rem;
-            margin: 40px 0;
-            transition: transform 0.2s;
+            margin: 30px 0;
+            transition: all 0.2s;
         }
 
         .btn-main:hover {
@@ -155,11 +144,22 @@
             background: #3b82f6;
         }
 
+        .os-info {
+            font-size: 0.9rem;
+            color: #94a3b8;
+        }
+
         footer {
             padding: 60px 0;
             text-align: center;
-            font-size: 1rem;
+            font-size: 0.9rem;
             color: #94a3b8;
+        }
+
+        /* スマホ対応の微調整 */
+        @media (max-width: 768px) {
+            .feature-grid { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 2.5rem; }
         }
     </style>
 </head>
@@ -169,8 +169,7 @@
     <div class="container">
         <div class="logo">NextGen Media Player</div>
         <nav>
-            <a href="#features">機能</a>
-            <a href="https://github.com/shinorail/NextGenPlayer/releases/tag/v1.0.0" class="nav-btn">無料ダウンロード</a>
+            <a href="https://github.com/shinorail/NextGenPlayer/releases/download/v1.0.0/NextGen.Media.Player.Setup.1.0.0.exe" class="nav-btn">無料ダウンロード</a>
         </nav>
     </div>
 </header>
@@ -179,10 +178,7 @@
     <section class="hero">
         <div class="container">
             <h1>動画視聴を、<br>もっと軽快に。</h1>
-            <p>シンプルさと高機能を両立した、PC専用次世代メディアプレーヤー。</p>
-            <div class="hero-image">
-                <span>UI Preview</span>
-            </div>
+            <p>シンプルさと高機能を両立したPC専用プレーヤー。ドラッグ＆ドロップですぐに再生を開始できます。</p>
         </div>
     </section>
 
@@ -191,33 +187,40 @@
             <div class="feature-grid">
                 <div class="feature-card">
                     <h2>⚡ 速度</h2>
-                    <p>0.5x 〜 3.0xまで対応。音程を変えずにスムーズな倍速再生が可能です。</p>
+                    <p>0.5x 〜 3.0xまで対応。音程を保ったまま、あなたのペースで視聴できます。</p>
                 </div>
                 <div class="feature-card">
                     <h2>📸 記録</h2>
-                    <p>再生中の画面をワンクリックで高精細に保存。スクショ撮影も思いのまま。</p>
+                    <p>ワンクリックで高精細なスクリーンショットを保存。一瞬のディテールを逃しません。</p>
                 </div>
                 <div class="feature-card">
                     <h2>🖱️ 操作</h2>
-                    <p>ドラッグ&ドロップでの即時再生。直感的なマウス操作で輝度や音量を調整。</p>
+                    <p>直感的なマウスジェスチャーに対応。輝度や音量もホイール一つで自由自在。</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="download" class="download">
+    <section id="download" class="download-section">
         <div class="container">
-            <h2>Download v1.0.0</h2>
-            <p>Windows / macOS 対応</p>
-            <a href="https://github.com/shinorail/NextGenPlayer/releases/tag/v1.0.0" class="btn-main">最新版をGitHubから入手</a>
-            <p style="color: #94a3b8;">Shinonoi Crew Depot Works</p>
+            <h2>Start your experience</h2>
+            <p>Version 1.0.0</p>
+            
+            <a href="https://github.com/shinorail/NextGenPlayer/releases/download/v1.0.0/NextGen.Media.Player.Setup.1.0.0.exe" class="btn-main">
+                今すぐダウンロード (Windows)
+            </a>
+            
+            <div class="os-info">
+                対応OS: Windows 10 / 11<br>
+                Produced by Shinonoi Crew Depot Works
+            </div>
         </div>
     </section>
 </main>
 
 <footer>
     <div class="container">
-        <p>&copy; 2024 Shinonoi Crew Depot Works.</p>
+        <p>&copy; 2026 Shinonoi Crew Depot Works. All rights reserved.</p>
     </div>
 </footer>
 
