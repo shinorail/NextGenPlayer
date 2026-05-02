@@ -3,22 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NextGen Media Player | 高機能メディアプレーヤー</title>
+    <title>NextGen Media Player v1.2.0 | 篠ノ井乗務区</title>
     <style>
-        /* --- デザイン設定 --- */
+        /* --- デザイン設定：黒×青のモダン・メカニカルUI --- */
         :root {
-            --primary: #2563eb;
-            --dark: #0f172a;
-            --light-bg: #f8fafc;
-            --text-main: #334155;
-            --white: #ffffff;
+            --bg-dark: #0a0e14;
+            --card-bg: #161b22;
+            --accent-blue: #2563eb;
+            --text-main: #f8fafc;
+            --text-sub: #94a3b8;
+            --border: #30363d;
         }
 
         body {
             margin: 0;
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            font-family: 'Inter', -apple-system, sans-serif;
+            background-color: var(--bg-dark);
             color: var(--text-main);
-            background-color: var(--white);
             line-height: 1.6;
             scroll-behavior: smooth;
         }
@@ -31,13 +32,13 @@
 
         /* Header */
         header {
-            padding: 25px 0;
+            padding: 20px 0;
             position: sticky;
             top: 0;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
+            background: rgba(10, 14, 20, 0.9);
+            backdrop-filter: blur(12px);
             z-index: 100;
-            border-bottom: 1px solid #f1f5f9;
+            border-bottom: 1px solid var(--border);
         }
 
         header .container {
@@ -48,118 +49,140 @@
 
         .logo {
             font-weight: 800;
-            font-size: 1.4rem;
-            color: var(--dark);
+            font-size: 1.2rem;
+            letter-spacing: 1px;
+        }
+
+        .v-tag {
+            background: var(--accent-blue);
+            font-size: 0.7rem;
+            padding: 2px 8px;
+            border-radius: 4px;
+            margin-left: 8px;
+            vertical-align: middle;
         }
 
         .nav-btn {
-            background: var(--dark);
-            color: var(--white) !important;
-            padding: 10px 24px;
-            border-radius: 8px;
+            background: var(--accent-blue);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 6px;
             text-decoration: none;
             font-weight: 600;
-            transition: opacity 0.2s;
+            font-size: 0.9rem;
         }
-
-        .nav-btn:hover { opacity: 0.8; }
 
         /* Hero Section */
         .hero {
             padding: 100px 0;
             text-align: center;
-            background: radial-gradient(circle at top, #f8fafc 0%, #ffffff 100%);
+            background: radial-gradient(circle at center, #1e293b 0%, #0a0e14 100%);
         }
 
         .hero h1 {
-            font-size: 3.5rem;
-            color: var(--dark);
-            margin-bottom: 24px;
-            letter-spacing: -1.5px;
-            line-height: 1.2;
+            font-size: 3.8rem;
+            margin-bottom: 20px;
+            letter-spacing: -2px;
+            line-height: 1.1;
         }
 
         .hero p {
-            font-size: 1.3rem;
-            color: #64748b;
-            max-width: 700px;
-            margin: 0 auto 50px;
+            font-size: 1.2rem;
+            color: var(--text-sub);
+            max-width: 800px;
+            margin: 0 auto 40px;
         }
 
-        /* Features */
-        .features {
+        /* UI Preview Area (黒と青のイメージ) */
+        .ui-preview {
+            width: 100%;
+            max-width: 900px;
+            height: 480px;
+            background: #000;
+            margin: 0 auto;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            box-shadow: 0 0 50px rgba(37, 99, 235, 0.2);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .ui-header { padding: 15px; border-bottom: 1px solid #222; font-size: 0.8rem; color: #555; text-align: left; }
+        .ui-main { flex: 1; display: flex; align-items: center; justify-content: center; color: var(--accent-blue); font-weight: bold; }
+        .ui-footer { padding: 20px; background: #0d1117; display: flex; align-items: center; gap: 20px; }
+        .ui-slider { height: 4px; flex: 1; background: #333; border-radius: 2px; position: relative; }
+        .ui-slider-fill { width: 60%; height: 100%; background: var(--accent-blue); box-shadow: 0 0 10px var(--accent-blue); }
+
+        /* Feature Section */
+        .updates {
             padding: 100px 0;
-            background-color: var(--white);
         }
 
-        .feature-grid {
+        .update-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
         }
 
-        .feature-card {
-            padding: 40px;
-            background: var(--light-bg);
-            border-radius: 20px;
-            text-align: center;
-            transition: transform 0.3s ease;
+        .update-card {
+            background: var(--card-bg);
+            padding: 35px;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            transition: 0.3s;
         }
 
-        .feature-card:hover {
-            transform: translateY(-5px);
+        .update-card:hover { border-color: var(--accent-blue); transform: translateY(-5px); }
+
+        .update-card h3 {
+            color: var(--accent-blue);
+            margin-top: 0;
+            font-size: 1.3rem;
+            display: flex;
+            justify-content: space-between;
         }
 
-        .feature-card h2 {
-            font-size: 1.5rem;
-            color: var(--dark);
-            margin-bottom: 15px;
+        .update-card .lang-sub { font-size: 0.7rem; color: var(--text-sub); font-weight: normal; }
+
+        .update-card p {
+            font-size: 0.95rem;
+            color: var(--text-sub);
+            margin-bottom: 0;
         }
 
         /* Download Section */
-        .download-section {
-            padding: 120px 0;
+        .download-box {
+            padding: 100px 0;
             text-align: center;
-            background-color: var(--dark);
-            color: var(--white);
-            border-radius: 40px;
-            margin: 0 20px 60px;
+            border-top: 1px solid var(--border);
         }
 
         .btn-main {
             display: inline-block;
-            background: var(--primary);
-            color: var(--white);
-            padding: 20px 50px;
+            background: var(--accent-blue);
+            color: white;
+            padding: 20px 60px;
             border-radius: 12px;
             text-decoration: none;
-            font-weight: 700;
-            font-size: 1.2rem;
-            margin: 30px 0;
-            transition: all 0.2s;
+            font-weight: 800;
+            font-size: 1.25rem;
+            box-shadow: 0 10px 30px rgba(37, 99, 235, 0.3);
+            transition: 0.2s;
         }
 
-        .btn-main:hover {
-            transform: scale(1.05);
-            background: #3b82f6;
-        }
-
-        .os-info {
-            font-size: 0.9rem;
-            color: #94a3b8;
-        }
+        .btn-main:hover { transform: scale(1.05); background: #3b82f6; }
 
         footer {
-            padding: 60px 0;
+            padding: 50px 0;
             text-align: center;
-            font-size: 0.9rem;
-            color: #94a3b8;
+            color: var(--text-sub);
+            font-size: 0.8rem;
         }
 
-        /* スマホ対応の微調整 */
         @media (max-width: 768px) {
-            .feature-grid { grid-template-columns: 1fr; }
             .hero h1 { font-size: 2.5rem; }
+            .update-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -167,61 +190,70 @@
 
 <header>
     <div class="container">
-        <div class="logo">NextGen Media Player</div>
-        <nav>
-            <a href="https://github.com/shinorail/NextGenPlayer/releases/download/v1.0.0/NextGen.Media.Player.Setup.1.0.0.exe" class="nav-btn">無料ダウンロード</a>
-        </nav>
+        <div class="logo">NextGen Media Player <span class="v-tag">v1.2.0</span></div>
+        <a href="#download" class="nav-btn">Download</a>
     </div>
 </header>
 
 <main>
     <section class="hero">
         <div class="container">
-            <h1>動画視聴を、<br>もっと軽快に。</h1>
-            <p>シンプルさと高機能を両立したPC専用プレーヤー。ドラッグ＆ドロップですぐに再生を開始できます。</p>
-        </div>
-    </section>
-
-    <section id="features" class="features">
-        <div class="container">
-            <div class="feature-grid">
-                <div class="feature-card">
-                    <h2>⚡ 速度</h2>
-                    <p>0.5x 〜 3.0xまで対応。音程を保ったまま、あなたのペースで視聴できます。</p>
-                </div>
-                <div class="feature-card">
-                    <h2>📸 記録</h2>
-                    <p>ワンクリックで高精細なスクリーンショットを保存。一瞬のディテールを逃しません。</p>
-                </div>
-                <div class="feature-card">
-                    <h2>🖱️ 操作</h2>
-                    <p>直感的なマウスジェスチャーに対応。輝度や音量もホイール一つで自由自在。</p>
+            <h1>進化は、<br>細部に宿る。</h1>
+            <p>篠ノ井乗務区が贈る、究極の視聴体験。メカニカルな美しさと、プロ仕様の安定性をその手に。</p>
+            
+            <div class="ui-preview">
+                <div class="ui-header">NextGen Media Player | 📂 開く / OPEN</div>
+                <div class="ui-main">MECHANICAL INTERFACE READY</div>
+                <div class="ui-footer">
+                    <span style="font-size: 0.7rem; color: var(--accent-blue);">VOL</span>
+                    <div class="ui-slider"><div class="ui-slider-fill"></div></div>
+                    <span style="font-size: 0.7rem; color: var(--accent-blue);">BRIGHT</span>
+                    <div class="ui-slider"><div class="ui-slider-fill" style="width: 40%;"></div></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="download" class="download-section">
-        <div class="container">
-            <h2>Start your experience</h2>
-            <p>Version 1.0.0</p>
-            
-            <a href="https://github.com/shinorail/NextGenPlayer/releases/download/v1.0.0/NextGen.Media.Player.Setup.1.0.0.exe" class="btn-main">
-                今すぐダウンロード (Windows)
-            </a>
-            
-            <div class="os-info">
-                対応OS: Windows 10 / 11<br>
-                Produced by Shinonoi Crew Depot Works
+    <section class="container updates">
+        <h2 style="text-align: center; margin-bottom: 60px;">Major Updates v1.2.0</h2>
+        <div class="update-grid">
+            <div class="update-card">
+                <h3>免責事項の明記 <span class="lang-sub">TERMS OF SERVICE</span></h3>
+                <p>起動時の利用規約同意画面を追加。制作者・ユーザー双方の安全を守るプロ仕様の設計へ。</p>
+            </div>
+            <div class="update-card">
+                <h3>UIリニューアル <span class="lang-sub">DESIGN RENEWAL</span></h3>
+                <p>スライダーやコントロールを黒×青のモダンデザインに。高コントラストで視認性が向上しました。</p>
+            </div>
+            <div class="update-card">
+                <h3>日英併記UI <span class="lang-sub">BILINGUAL INTERFACE</span></h3>
+                <p>各メニューに英語を併記。運転台のインストルメントを彷彿とさせる知的な美しさを追求。</p>
+            </div>
+            <div class="update-card">
+                <h3>履歴・直感操作 <span class="lang-sub">HISTORY & D+D</span></h3>
+                <p>サイドバー履歴と、強化されたドラッグ＆ドロップ。見たい動画を瞬時に、ポイッと再生。</p>
+            </div>
+            <div class="update-card">
+                <h3>自動更新確認 <span class="lang-sub">AUTO UPDATE</span></h3>
+                <p>起動時に最新バージョンを自動チェック。常に「篠ノ井乗務区」の最新技術を届けます。</p>
             </div>
         </div>
+    </section>
+
+    <section id="download" class="download-box container">
+        <h2>Get the v1.2.0 Update</h2>
+        <p>Windows 10 / 11 専用インストーラー</p>
+        <a href="https://github.com/shinorail/NextGenPlayer/releases/download/v1.2.0/NextGenPlayer_Setup_1.2.0.exe" class="btn-main">
+            今すぐダウンロード
+        </a>
+        <p style="margin-top: 30px; font-size: 0.8rem; color: var(--text-sub);">
+            Produced by Shinonoi Crew Depot Works
+        </p>
     </section>
 </main>
 
 <footer>
-    <div class="container">
-        <p>&copy; 2026 Shinonoi Crew Depot Works. All rights reserved.</p>
-    </div>
+    <p>&copy; 2024 Shinonoi Crew Depot Works. All rights reserved.</p>
 </footer>
 
 </body>
