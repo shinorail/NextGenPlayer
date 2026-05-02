@@ -3,110 +3,220 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NextGen Media Player - Simple & Powerful</title>
+    <title>NextGen Media Player | 高機能メディアプレーヤー</title>
     <style>
+        /* --- CSS Style Settings --- */
         :root {
-            --primary-color: #2563eb; /* 誠実なブルー */
-            --bg-color: #ffffff;
-            --text-main: #1f2937;
-            --text-sub: #6b7280;
-            --section-bg: #f9fafb;
+            --primary: #2563eb;
+            --dark: #0f172a;
+            --light-bg: #f8fafc;
+            --text-main: #334155;
+            --white: #ffffff;
+            --accent: #3b82f6;
         }
 
         body {
             margin: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
             color: var(--text-main);
+            background-color: var(--white);
             line-height: 1.6;
-            background-color: var(--bg-color);
+            scroll-behavior: smooth;
         }
 
-        /* Layout */
+        /* PC専用レイアウト調整 */
+        @media (min-width: 1024px) {
+            .container {
+                max-width: 1100px;
+                margin: 0 auto;
+                padding: 0 40px;
+            }
+        }
+
         .container {
-            max-width: 1000px;
-            margin: 0 auto;
             padding: 0 20px;
         }
 
         /* Header */
         header {
-            padding: 20px 0;
-            border-bottom: 1px solid #eee;
+            padding: 25px 0;
+            position: sticky;
+            top: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 100;
+            border-bottom: 1px solid #f1f5f9;
         }
-        nav {
+
+        header .container {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
+
         .logo {
-            font-size: 1.2rem;
-            font-weight: bold;
-            color: var(--primary-color);
+            font-weight: 800;
+            font-size: 1.4rem;
+            color: var(--dark);
+            letter-spacing: -0.5px;
         }
 
-        /* Hero */
-        .hero {
-            padding: 80px 0;
-            text-align: center;
-        }
-        .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 10px;
-            letter-spacing: -1px;
-        }
-        .hero p {
-            font-size: 1.2rem;
-            color: var(--text-sub);
-            margin-bottom: 30px;
-        }
-
-        /* Buttons */
-        .btn {
-            display: inline-block;
-            padding: 12px 32px;
-            background-color: var(--primary-color);
-            color: white;
+        nav a {
             text-decoration: none;
-            border-radius: 8px;
+            color: var(--text-main);
+            margin-left: 35px;
             font-weight: 600;
-            transition: opacity 0.2s;
-        }
-        .btn:hover {
-            opacity: 0.9;
+            transition: color 0.2s;
         }
 
-        /* Features */
-        .features {
-            padding: 60px 0;
-            background-color: var(--section-bg);
+        nav a:hover {
+            color: var(--primary);
         }
+
+        .nav-btn {
+            background: var(--dark);
+            color: var(--white) !important;
+            padding: 10px 24px;
+            border-radius: 8px;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 120px 0;
+            text-align: center;
+            background: radial-gradient(circle at top, #f8fafc 0%, #ffffff 100%);
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            color: var(--dark);
+            margin-bottom: 24px;
+            line-height: 1.1;
+            letter-spacing: -2px;
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            color: #64748b;
+            max-width: 700px;
+            margin: 0 auto 60px;
+        }
+
+        /* PC向けの大きなプレビュー画面 */
+        .hero-image {
+            width: 100%;
+            max-width: 950px;
+            height: 540px;
+            background: #1e293b;
+            margin: 0 auto;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #475569;
+            box-shadow: 0 40px 100px rgba(0,0,0,0.15);
+            border: 8px solid #f1f5f9;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-image::after {
+            content: "NextGen Player UI Preview";
+            font-weight: bold;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 120px 0;
+        }
+
         .feature-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 40px;
-            margin-top: 40px;
         }
-        .feature-item h3 {
-            margin-top: 0;
-            color: var(--primary-color);
+
+        .feature-card {
+            padding: 50px 40px;
+            background: var(--light-bg);
+            border-radius: 24px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid transparent;
         }
-        .feature-item p {
-            font-size: 0.95rem;
-            color: var(--text-sub);
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            background: white;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+            border-color: #e2e8f0;
+        }
+
+        .feature-card .icon {
+            font-size: 2.5rem;
+            margin-bottom: 25px;
+            display: block;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+
+        /* Download Section */
+        .download {
+            padding: 140px 0;
+            text-align: center;
+            background-color: var(--dark);
+            color: var(--white);
+            border-radius: 40px;
+            margin: 0 20px 60px;
+        }
+
+        .download h2 {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        .btn-main {
+            display: inline-block;
+            background: var(--primary);
+            color: var(--white);
+            padding: 20px 50px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin: 40px 0;
+            transition: all 0.2s;
+        }
+
+        .btn-main:hover {
+            background: #3b82f6;
+            transform: scale(1.05);
+        }
+
+        .sub-text {
+            font-size: 1rem;
+            color: #94a3b8;
         }
 
         /* Footer */
         footer {
-            padding: 40px 0;
+            padding: 60px 0;
             text-align: center;
-            font-size: 0.85rem;
-            color: var(--text-sub);
-            border-top: 1px solid #eee;
+            font-size: 1rem;
+            color: #94a3b8;
         }
 
-        /* Mobile Responsive */
-        @media (max-width: 600px) {
-            .hero h1 { font-size: 2rem; }
+        /* Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        main {
+            animation: fadeIn 1s ease-out;
         }
     </style>
 </head>
@@ -114,9 +224,10 @@
 
 <header>
     <div class="container">
+        <div class="logo">NextGen Media Player</div>
         <nav>
-            <div class="logo">NextGen Media Player</div>
-            <a href="#download" class="btn" style="padding: 8px 16px; font-size: 0.9rem;">無料配布中</a>
+            <a href="#features">機能</a>
+            <a href="#download" class="nav-btn">無料ダウンロード</a>
         </nav>
     </div>
 </header>
@@ -125,44 +236,49 @@
     <section class="hero">
         <div class="container">
             <h1>動画視聴を、<br>もっと軽快に。</h1>
-            <p>NextGen Media Playerは、シンプルさと高機能を両立した<br>オープンソースのメディアプレーヤーです。</p>
-            <a href="#download" class="btn">今すぐダウンロード</a>
+            <p>無駄を削ぎ落としたインターフェースと、PCパワーを最大限に活かす再生エンジン。あなたのメディア体験を再定義します。</p>
+            <div class="hero-image">
+                </div>
         </div>
     </section>
 
-    <section class="features">
+    <section id="features" class="features">
         <div class="container">
             <div class="feature-grid">
-                <div class="feature-item">
-                    <h3>自由な再生速度</h3>
-                    <p>0.5倍から3.0倍まで対応。細かな確認も、時短での視聴も、これ一つで思いのままに。</p>
+                <div class="feature-card">
+                    <span class="icon">⚡</span>
+                    <h3>スマート可変速</h3>
+                    <p>0.5x から 3.0x まで、音質の劣化を抑えたまま再生。効率的なインプットをサポートします。</p>
                 </div>
-                <div class="feature-item">
-                    <h3>ワンクリック保存</h3>
-                    <p>気になった瞬間を逃さずスクリーンショット。高画質のまま画像として保存できます。</p>
+                <div class="feature-card">
+                    <span class="icon">📸</span>
+                    <h3>瞬間キャプチャ</h3>
+                    <p>4K動画からでも、一瞬のフレームを逃さず高画質保存。PCならではのクイック保存が可能です。</p>
                 </div>
-                <div class="feature-item">
-                    <h3>洗練されたUI</h3>
-                    <p>ドラッグ&ドロップですぐに再生。設定に迷わない直感的なユーザーインターフェース。</p>
+                <div class="feature-card">
+                    <span class="icon">🖱️</span>
+                    <h3>直感的な操作</h3>
+                    <p>ドラッグ&ドロップ、マウスホイールでの輝度・音量調整。キーボードショートカットも自由にカスタマイズ。</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="download" style="padding: 80px 0; text-align: center;">
+    <section id="download" class="download">
         <div class="container">
-            <h2>Download</h2>
-            <p style="color: var(--text-sub);">Windows / macOS / Linux 対応</p>
-            <div style="margin-top: 20px;">
-                <a href="#" class="btn">GitHubで公開中</a>
+            <h2>Start your experience</h2>
+            <p>Windows 10/11 & macOS 対応</p>
+            <div class="btn-group">
+                <a href="#" class="btn-main">最新バージョンをダウンロード</a>
             </div>
+            <p class="sub-text">Shinonoi Crew Depot Works | Released under Open Source</p>
         </div>
     </section>
 </main>
 
 <footer>
     <div class="container">
-        <p>&copy; 2024 Shinonoi Crew Depot Works. Produced for all users.</p>
+        <p>&copy; 2024 Shinonoi Crew Depot Works. Made for Power Users.</p>
     </div>
 </footer>
 
